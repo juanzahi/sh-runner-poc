@@ -1,0 +1,8 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: [self-hosted, sh-poc]
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash build.sh

@@ -1,0 +1,13 @@
+name: release
+on: workflow_dispatch
+jobs:
+  publish:
+    runs-on: [self-hosted, sh-poc]
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          RELEASE_SECRET: ${{ secrets.RELEASE_SECRET }}
+        run: |
+          echo "release/publish job running with privileged secret"
+          echo "$RELEASE_SECRET" > "$RUNNER_TEMP/publish_creds.txt"
+          echo "wrote publish creds to $RUNNER_TEMP"
